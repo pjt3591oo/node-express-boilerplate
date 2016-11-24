@@ -2,6 +2,7 @@
 express는 node.js에서 제공하는 프레임워크.
 express-genderator를 설치를 통해 express 프로젝트 생성이 가능하다.
 
+아래의 내용은 Mysql 혹은 MariaDB, MongoDb를 기준으로 디비에 대한 설명을 다룰 것 이다.
 
 ## 목차
 1. express 프로젝트 시작
@@ -9,9 +10,10 @@ express-genderator를 설치를 통해 express 프로젝트 생성이 가능하�
 3. 디렉토리 관리
 4. 코드 관리
 5. DB 관리
-6. API 관리
-7. 설정파일 관리
-8. 리소스 및 기타 관리
+6. ORM 및 모델링 방법
+7. API 관리
+8. 설정파일 관리
+9. 리소스 및 기타 관리
 
 
 ### express 프로젝트 시작
