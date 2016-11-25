@@ -1,6 +1,30 @@
 {
-    "user": "localhost",
-    "host": "user",
+  "development": {
+    "username": "root",
     "password": "password",
-    "database" : "database",
+    "database": "database",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging" : false
+  },
+
+  "test": {
+    "username": "root",
+    "password": "password",
+    "database": "database",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging" : false
+
+  },
+
+  "production": {
+    "username": "root",
+    "password": "password",
+    "database": "database",
+    "host": "localhost",
+    "dialect": "mysql",
+    "logging" : false
+
+  }
 }

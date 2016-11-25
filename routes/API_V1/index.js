@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-const test1 = require('./test1');
-const test2 = require('./test2');
+const rdb = require('./rdb');
+const mongo = require('./mongo');
 
 
-router.use('/test1',test1 )
-router.use('/test2',test2 )
+router.use('/rdb',rdb )
+router.use('/mongo',mongo )
 
 module.exports = router;
