@@ -1,5 +1,4 @@
 var MongoClient = require('mongodb').MongoClient
-var url = require('../config/MONGO');
 
 var state = {
   db: null,

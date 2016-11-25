@@ -8,6 +8,8 @@ const app = require('../app');
 const debug = require('debug')('init:server');
 const http = require('http');
 const numCPUs = require('os').cpus().length;
+const mongodb = require('../models_mong');
+const url =require('../config/MONGO.json');
 
 /**
  * Get port from environment and store in Express.
@@ -37,16 +39,14 @@ if (cluster.isMaster) {
   /**
    * Create HTTP server.
    */
+   var server = http.createServer(app);
+   mongodb.connect(url, function(err){
+       server.listen(port);
+       server.on('error', onError);
+       server.on('listening', onListening);
+   });
 
-  var server = http.createServer(app);
 
-  /**
-   * Listen on provided port, on all network interfaces.
-   */
-
-  server.listen(port);
-  server.on('error', onError);
-  server.on('listening', onListening);
 }
 
 /**
