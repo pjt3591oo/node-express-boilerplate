@@ -4,6 +4,7 @@ express-genderator를 설치를 통해 express 프로젝트 생성이 가능하�
 
 아래의 내용은 Mysql 혹은 MariaDB, MongoDb(mongodb모듈을 통해 로우단에서 mongodb를 다룬다.)를 기준으로 디비에 대한 설명을 다룰 것 이다.
 
+
 ## 목차
 1. express 프로젝트 시작
 2. 생성 된 프로젝트 설명 및 수정
@@ -14,6 +15,7 @@ express-genderator를 설치를 통해 express 프로젝트 생성이 가능하�
 7. ORM 및 모델링 방법
 8. 413 응답코드 대처법
 9. 미들웨어의 활용방법
+10. file upload 방법
 
 
 ### 1. express 프로젝트 시작
@@ -501,3 +503,33 @@ http.createServer(app).listen(3000, ()=>{
 ```
 
 위처럼 해주면 한번의 인증 코드 작성으로 여러곳에서 재사용이 가능 해 졌다.
+
+
+### 10. file upload 방법
+파일을 업로드 하기 위해서는 multer라는 모듈을 설치를 해준다.
+
+```
+$ npm install -s multer
+```
+
+```.js
+// ./routes/API_V1/file.js
+
+const FILE_UPLOAD_PATH_LOCAL = "./uploads";
+
+const FileUpload = require('multer')({ dest: FILE_UPLOAD_PATH_LOCAL });
+
+
+const router = require('express').Router();
+
+router.post('/upload', FileUpload.single('name'), (req, res, next)=>{
+    console.log(req.file);
+    res.end(' success file upload');
+});
+```
+
+multer 모듈을 가지고 오면 해당 모듈에 첫번째 인자로 파일 업로드 경로를 적어준다.
+파일을 처리하는 라우터에 미들웨어를 추가해 주면 된다. name은 해당 파일을 가지고 있는 키라고 생각하면 된다. `{name : 파일}` 요런 구조로 되있다. 만약 파일이 하나가 아닌 여러개일 경우 single대신에 array같은 메소드를 사용하면 된다.
+
+[multer git document](https://github.com/expressjs/multer)참조
+multer에 대한 자세한 설명은 문서를 참조하길 바란다.
